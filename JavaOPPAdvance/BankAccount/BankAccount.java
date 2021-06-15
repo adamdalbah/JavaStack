@@ -25,29 +25,40 @@ public class BankAccount{
     }
 
     public double getSaving_balance(){
-	return checking_balance;
+	return saving_balance;
     }
     public String getAccountNumber(){
 	return accountNumber;
     }
   
-    public void depositChecking(double money){
-	checking_balance += money;
+    public void depositChecking(double money, String type){
+	if(type == "saving")
+		checking_balance += money;
+	else if(type == "checking")
+		saving_balance += money;
 	total_money += money;
     }
 
-    public void depositSaving(double money){
-	saving_balance += money;
-	total_money += money;
-    }
-    
-    public void withdrawSaving(double money){
-	if (money > saving_balance){
-	    System.out.println("You don't have suffiecent money");
+  
+    public void withdraw(double money, String type){
+	if(type == "saving"){
+		if (money > saving_balance){
+	    		System.out.println("You don't have suffiecent money");
+		}
+		else{
+	    		saving_balance -= money;
+	   		 total_money -= money;
+		}
 	}
-	else{
-	    saving_balance -= money;
-	    total_money -= money;
+
+	else if(type == "checking"){
+		if (money > checking_balance){
+	    		System.out.println("You don't have suffiecent money");
+		}
+		else{
+	    		checking_balance -= money;
+	   		 total_money -= money;
+		}
 	}	
     }
 
