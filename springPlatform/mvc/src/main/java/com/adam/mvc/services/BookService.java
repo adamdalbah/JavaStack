@@ -39,6 +39,7 @@ public class BookService {
 		book.setDescription(desc);
 		book.setLanguage(lang);
 		book.setNumberOfPages(150);
+		bookRepository.save(book);
 		return book;
 	}
 	public void deleteBook(Long id) {
